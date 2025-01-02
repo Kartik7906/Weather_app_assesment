@@ -7,8 +7,7 @@ yarn-debug.log
 yarn-integrity
 config.gypi
 node-gyp
-package-lock.json
 yarn.lock
 .DS_Store
 .env
-*.json
+weather-app-login-a5f37-firebase-adminsdk-*.json
