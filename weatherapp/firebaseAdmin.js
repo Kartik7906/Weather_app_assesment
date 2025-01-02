@@ -1,9 +1,11 @@
-// firebaseAdmin.js
-
 const admin = require('firebase-admin');
-const serviceAccount = require('./weather-app-login-a5f37-firebase-adminsdk-vs2xw-b06883ae23.json');
+const dotenv = require('dotenv');
 
-// Initialize the Admin SDK with your service account
+dotenv.config();
+
+// Parse Firebase config from environment variable
+const serviceAccount = JSON.parse(process.env.FIREBASE_CONFIG);
+
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
 });
