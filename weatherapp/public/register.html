@@ -6,16 +6,44 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h2>Register</h2>
-  <form id="registerForm">
-    <input type="text" id="regUsername" placeholder="Username" required><br>
-    <input type="email" id="regEmail" placeholder="Email" required><br>
-    <input type="password" id="regPassword" placeholder="Password" required><br>
-    <button type="submit">Register</button>
-  </form>
-  <p>Already have an account? <a href="login.html">Login here</a></p>
 
-  <div id="registerOutput"></div>
+  <!-- Register Form Container -->
+  <!-- Register Form Container -->
+  <div class="registercontainer">
+    <div class="registerformcontainer">
+      <h2 class="registerheading">Register</h2>
+      <form id="registerForm" class="registerform">
+        <!-- Username -->
+        <div class="registerformgroup">
+          <input type="text" id="regUsername" placeholder="Username" required />
+        </div>
+        <!-- Email -->
+        <div class="registerformgroup">
+          <input type="email" id="regEmail" placeholder="Email" required />
+        </div>
+        <!-- Password -->
+        <div class="registerformgroup">
+          <input type="password" id="regPassword" placeholder="Password" required />
+        </div>
+        <!-- Confirm Password -->
+        <div class="registerformgroup">
+          <input
+            type="password"
+            id="regConfirmPassword"
+            placeholder="Confirm Password"
+            required
+          />
+        </div>
+        <!-- Register Button -->
+        <button type="submit" class="registerbtn">Register</button>
+      </form>
+      <p class="registerPtag">
+        Already have an account?
+        <a href="login.html"><span>Login here</span></a>
+      </p>
+    </div>
+  </div>
+  <!-- register container ends here: -->
 
   <script>
     const registerForm = document.getElementById('registerForm');
@@ -32,7 +60,8 @@
           body: JSON.stringify({ username, email, password })
         });
         const data = await res.json();
-        document.getElementById('registerOutput').innerText = data.msg || JSON.stringify(data);
+       // document.getElementById('registerOutput').innerText = data.msg || JSON.stringify(data);
+        alert(data.msg || JSON.stringify(data));
         if (res.ok) {
           // If registration successful, redirect to login
           window.location.href = 'login.html';

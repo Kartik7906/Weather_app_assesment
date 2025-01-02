@@ -1,0 +1,234 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    min-height: 100vh;
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    position: relative;
+  }
+
+  .userWorkSpace {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: transparent;
+    color: #fff;
+    padding: 0 20px;
+    border-bottom: 2px solid gray;
+    z-index: 999;
+  }
+  
+  .userWorkSpace h1 {
+    font-size: 1.2rem;
+    font-weight: 500;
+  }
+  
+  .logoutBtn {
+    border: none;
+    background-color: #ff5252;
+    font-family: "Poppins", sans-serif;
+    color: #fff;
+    border-radius: 20px;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+  }
+  
+  .logoutBtn:hover {
+    background-color: #e60000;
+  }
+  
+  .card {
+    margin-top: 80px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    max-width: 1000px;
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px;
+    gap: 20px;
+    color: #ffffff;
+  }
+  
+
+  .weather {
+    flex: 0.6;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align text to the left */
+    gap: 25px;
+  }
+  
+  /* Weather icon */
+  .weatherIcon {
+    width: 80px;
+    height: 80px;
+    transition: transform 0.3s ease;
+    align-items: center;
+  }
+  .weatherIcon:hover {
+    transform: scale(1.1);
+  }
+
+  .weathericondiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .temp {
+    font-size: 4rem; 
+    font-weight: 600;
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+  }
+
+  .CityName {
+    font-size: 5rem; 
+    font-weight: 600;
+    margin: 0;
+    font-family: 'Times New Roman', Times, serif;
+  }
+
+  .details {
+    display: flex;
+    gap: 40px;
+    margin-top: 10px;
+  }
+  .col {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .col img {
+    width: 30px;
+    height: 30px;
+  }
+  .humidity,
+  .wind {
+    font-size: 2rem;
+    font-weight: 600;
+  }
+  .col p:nth-of-type(2) {
+    font-size: 0.8rem;
+    font-weight: 400;
+    opacity: 0.9;
+  }
+  
+  .search {
+    flex: 0.4;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .searchinputbox {
+    width: 300px;
+    height: 40px;
+    padding: 0 15px;
+    border: 1px solid #ffffff80;
+    border-radius: 8px;
+    background: transparent;
+    color: #ffffff;
+    font-size: 0.9rem;
+    transition: border-color 0.3s ease;
+  }
+  .searchinputbox:focus {
+    outline: none;
+    border-color: #fff;
+  }
+  
+  .searchbtndiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+  }
+  /* Circular search button */
+  .searchbtn {
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    background: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .searchbtn img {
+    width: 20px;
+    height: 20px;
+  }
+  .searchbtn:hover {
+    background-color: #0048e7;
+  }
+  
+  .currentlocationbtn {
+    height: 50px;
+    width: 350px;
+    border: none;
+    border-radius: 20px;
+    background: #ff8a00;
+    color: #ffffff;
+    padding: 0 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .currentlocationbtn:hover {
+    background-color: #e67700;
+  }
+  
+  /* ----------------------------------------------------------------------------
+     MEDIA QUERIES
+     ---------------------------------------------------------------------------- */
+  @media (max-width: 800px) {
+    .card {
+      flex-direction: column;
+      align-items: center;
+    }
+    .search, .weather {
+      flex: initial; /* Let them stretch naturally */
+      width: 100%;
+      align-items: center;
+      text-align: center;
+    }
+    .temp {
+      font-size: 3rem; /* Adjust for smaller screens */
+    }
+    .CityName {
+      font-size: 1.5rem;
+    }
+  }
+  
+  @media (max-width: 400px) {
+    .card {
+      width: 90%;
+    }
+    .searchinputbox {
+      width: 200px;
+    }
+  }
+  

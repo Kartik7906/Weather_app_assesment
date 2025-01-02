@@ -5,24 +5,36 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>WeatherApp_Assessment</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="./dashboard.css" />
 </head>
 <body>
+  <!-- Fixed header / Workspace section -->
+  <div class="userWorkSpace">
+    <h1>Username WorkSpace</h1>
+    <!-- NEW Logout Button (required as per your request) -->
+    <button class="logoutBtn" type="button">Logout</button>
+  </div>
+  
+  <!-- Main Card -->
   <div class="card">
-    <div class="userWorkSpace">
-      <h1>Username WorkSpace</h1>
-    </div>
+    <!-- Right-side search tools, but you can keep them in the DOM order you prefer -->
     <div class="search">
-      <input class="searchinputbox" type="text" placeholder="Enter City Name" spellcheck="false" />
-      <button class="searchbtn" type="button">
-        <img src="./images/search.png" alt="Search">
-      </button>
+      <div class="searchbtndiv">
+        <input class="searchinputbox" type="text" placeholder="Enter City Name" spellcheck="false" />
+        <button class="searchbtn" type="button">
+          <img src="./images/search.png" alt="Search">
+        </button>
+      </div>
+
       <button class="currentlocationbtn" type="button">Current Location</button>
     </div>
 
+    <!-- Left-side weather display -->
     <div class="weather">
-      <img src="./images/rain.png" class="weatherIcon" alt="Weather Icon" />
-      <h1 class="temp">22°C</h1>
+      <div class="weathericondiv">
+        <img src="./images/rain.png" class="weatherIcon" alt="Weather Icon" />
+        <h1 class="temp">22°C</h1>
+      </div>
       <h2 class="CityName">New York</h2>
       <div class="details">
         <div class="col">
@@ -42,6 +54,7 @@
       </div>
     </div>
   </div>
+
 
   <script src="script.js"></script>
 </body>

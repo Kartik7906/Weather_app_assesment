@@ -6,18 +6,27 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h2>Login</h2>
-  <form id="loginForm">
-    <input type="email" id="loginEmail" placeholder="Email" required><br>
-    <input type="password" id="loginPassword" placeholder="Password" required><br>
-    <button type="submit">Login</button>
-    <span>OR</span>
-    <!-- Google Sign-In Button -->
-    <button type="button" id="googleSignInBtn">Sign In With Google</button>
-  </form>
-
-  <p>Don’t have an account? <a href="register.html">Register here</a></p>
-  <div id="loginOutput"></div>
+  <div class="logincontainer">
+    <form id="loginForm" class="loginform">
+      <div class="loginformcontainer">
+        <div class="loginformheader">
+          <label>Email</label>
+          <input type="email" id="loginEmail" placeholder="Email" required>
+        </div>
+        <div class="loginformheader">
+          <label>Password</label>
+          <input type="password" id="loginPassword" placeholder="Password" required>
+        </div>
+        <div class="loginformfooter">
+          <button type="submit" class="loginbtn">Login</button>
+        </div>
+        <span class="loginspan">OR</span>
+        <button type="button" id="googleSignInBtn" class="googleloginbtn">Sign In With Google</button>
+        <p class="loginPtag">Don’t have an account? <a href="register.html"><span>Register here</span></a></p>
+      </div>
+    </form>
+  </div>
+  <!-- <div id="loginOutput"></div> -->
 
   <!-- 1) Your existing email/password login logic -->
   <script>
@@ -36,7 +45,8 @@
         const data = await res.json();
 
         // Show any message from server in the page
-        document.getElementById('loginOutput').innerText = data.msg || JSON.stringify(data);
+        // document.getElementById('loginOutput').innerText = data.msg || JSON.stringify(data);
+        alert(data.msg || JSON.stringify(data));
 
         if (res.ok) {
           // Save user ID in localStorage
@@ -50,6 +60,11 @@
       }
     });
   </script>
+  <!-- script file for login.html ends here -->
+
+
+
+  <!-- Firebase SDK start from here: -->
 
   <!-- 2) Use the COMPAT libraries (for old v8-style code: firebase.initializeApp, firebase.auth()) -->
   <script src="https://www.gstatic.com/firebasejs/9.17.2/firebase-app-compat.js"></script>

@@ -1,5 +1,6 @@
 const loggedInUserName = localStorage.getItem('loggedInUserName');
 const loggedInUserId = localStorage.getItem('loggedInUserId');
+const logoutbtn = document.querySelector('.logoutBtn');
 
 // If there's no user in localStorage, maybe redirect to login
 if (!loggedInUserId || !loggedInUserName) {
@@ -11,6 +12,13 @@ if (!loggedInUserId || !loggedInUserName) {
     userWorkSpaceElement.textContent = `${loggedInUserName} WorkSpace`;
   }
 }
+
+// 3) Logout functionality
+logoutbtn.addEventListener('click', () => {
+  localStorage.removeItem('loggedInUserId');
+  localStorage.removeItem('loggedInUserName');
+  window.location.href = 'login.html';
+});
 
 
 // public/script.js

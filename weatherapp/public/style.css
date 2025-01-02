@@ -1,10 +1,406 @@
-*{
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+/* Container that holds the entire page */
+.logincontainer {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: #fff;
+}
+
+.loginform {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.loginformcontainer {
+  width: 350px;
+  padding: 20px 25px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.loginformheader {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+}
+
+.loginformheader input {
+  width: 100%;
+  height: 40px;
+  margin-top: 5px;
+  border-radius: 8px;
+  border: 1px solid #ffffff80;
+  background: transparent;
+  padding-left: 10px;
+  font-size: 14px;
+  font-weight: 300;
+  color: #fff;
+}
+
+.loginformfooter {
+  width: 100%;
+}
+
+.loginbtn {
+  width: 100%;
+  height: 40px;
+  border-radius: 8px;
+  background: #1a5fff;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.loginbtn:hover {
+  background-color: #0048e7;
+}
+
+.loginspan {
+  font-size: 12px;
+  font-weight: 300;
+  color: #fff;
+  text-align: center;
+}
+
+.googleloginbtn {
+  width: 100%;
+  height: 40px;
+  border-radius: 8px;
+  border: none;
+  background: #fff;
+  color: #333;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.googleloginbtn:hover {
+  background-color: #e8e8e8;
+}
+
+.loginPtag {
+  font-size: 12px;
+  font-weight: 300;
+  color: #fff;
+  text-align: center;
+}
+
+.loginPtag a span {
+  color: #1a5fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.loginPtag a span:hover {
+  color: #0048e7;
+}
+/* login page css ends here:  */
+
+
+
+/* Container that holds the entire register page */
+.registercontainer {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: #fff;
+}
+
+.registerformcontainer {
+  width: 350px;
+  padding: 20px 25px;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(8px);
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.registerheading {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.registerform {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.registerformgroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.registerformgroup input {
+  width: 100%;
+  height: 40px;
+  border-radius: 8px;
+  border: 1px solid #ffffff80;
+  background: transparent;
+  padding-left: 10px;
+  font-size: 14px;
+  font-weight: 300;
+  color: #ffffff;
+}
+
+.registerbtn {
+  width: 100%;
+  height: 40px;
+  border-radius: 8px;
+  background: #1a5fff;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.registerbtn:hover {
+  background-color: #0048e7;
+}
+
+.registerPtag {
+  font-size: 14px;
+  font-weight: 300;
+  color: #ffffff;
+  text-align: center;
+}
+
+.registerPtag a span {
+  color: #1a5fff;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.registerPtag a span:hover {
+  color: #0048e7;
+}
+
+/* register login page ends here:  */
+/* RESET */
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
+  }
+  
+  /* BODY STYLING */
+  body {
+    /* A full-screen gradient background for a premium look */
+    min-height: 100vh;
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* CARD CONTAINER */
+  .card {
+    /* Card-like container with a glass (frosted) effect */
+    width: 350px;
+    padding: 20px;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.06);  /* Slightly transparent white */
+    backdrop-filter: blur(10px);            /* Frosted glass effect */
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.25);
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  /* USER WORKSPACE HEADER */
+  .userWorkSpace h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 5px;
+  }
+  
+  /* SEARCH SECTION */
+  .search {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* SEARCH INPUT BOX */
+  .searchinputbox {
+    flex: 1;
+    height: 40px;
+    padding: 0 10px;
+    border-radius: 8px;
+    border: 1px solid #ffffff80;
+    background: transparent;
+    color: #ffffff;
+    font-size: 0.9rem;
+    transition: border-color 0.3s ease;
+  }
+  
+  .searchinputbox:focus {
+    outline: none;
+    border-color: #1a5fff;
+  }
+  
+  /* SEARCH BUTTON */
+  .searchbtn {
+    width: 42px;
+    height: 40px;
+    border: none;
+    border-radius: 8px;
+    background: #1a5fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+  }
+  
+  .searchbtn img {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .searchbtn:hover {
+    background-color: #0048e7;
+  }
+  
+  /* CURRENT LOCATION BUTTON */
+  .currentlocationbtn {
+    height: 40px;
+    border: none;
+    border-radius: 8px;
+    background: #ff8a00;
+    color: #ffffff;
+    padding: 0 10px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .currentlocationbtn:hover {
+    background-color: #e67700;
+  }
+  
+  /* WEATHER DETAILS */
+  .weather {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  /* WEATHER ICON */
+  .weatherIcon {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+    /* A subtle hover animation for interactivity */
+    transition: transform 0.3s ease;
+  }
+  
+  .weatherIcon:hover {
+    transform: scale(1.1);
+  }
+  
+  /* TEMPERATURE */
+  .temp {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin: 0;
+  }
+  
+  /* CITY NAME */
+  .CityName {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin: 0;
+  }
+  
+  /* ADDITIONAL WEATHER DETAILS (Humidity / Wind) */
+  .details {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  
+  .col {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .col img {
+    width: 25px;
+    height: 25px;
+  }
+  
+  /* HUMIDITY & WIND TEXT */
+  .humidity,
+  .wind {
+    font-size: 1rem;
+    font-weight: 600;
+  }
+  
+  /* Additional descriptor text (e.g., "Humidity", "Wind Speed") */
+  .col p:nth-of-type(2) {
+    font-size: 0.8rem;
+    font-weight: 400;
+    opacity: 0.9;
+  }
+  
+  /* MAKE SMALLER SCREENS LOOK BETTER */
+  @media (max-width: 400px) {
+    .card {
+      width: 90%;
+    }
+  }
 
-body{
-    font-family: 'Poppins', sans-serif;
-    background-color: grey;
-}
