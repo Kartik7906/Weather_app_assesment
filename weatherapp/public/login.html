@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login - WeatherApp</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h2>Login</h2>
+  <form id="loginForm">
+    <input type="email" id="loginEmail" placeholder="Email" required><br>
+    <input type="password" id="loginPassword" placeholder="Password" required><br>
+    <button type="submit">Login</button>
+    <span>OR</span>
+    <!-- Google Sign-In Button -->
+    <button type="button" id="googleSignInBtn">Sign In With Google</button>
+  </form>
+
+  <p>Don’t have an account? <a href="register.html">Register here</a></p>
+  <div id="loginOutput"></div>
+
+  <!-- 1) Your existing email/password login logic -->
+  <script>
+    const loginForm = document.getElementById('loginForm');
+    loginForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('loginEmail').value.trim();
+      const password = document.getElementById('loginPassword').value.trim();
+
+      try {
+        const res = await fetch('/auth/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, password })
+        });
+        const data = await res.json();
+
+        // Show any message from server in the page
+        document.getElementById('loginOutput').innerText = data.msg || JSON.stringify(data);
+
+        if (res.ok) {
+          // Save user ID in localStorage
+          localStorage.setItem('loggedInUserId', data.user.id);
+          localStorage.setItem('loggedInUserName', data.user.username);
+          // Redirect to your main weather page
+          window.location.href = 'dashboard.html'; 
+        }
+      } catch (err) {
+        document.getElementById('loginOutput').innerText = 'Login error.';
+      }
+    });
+  </script>
+
+  <!-- 2) Use the COMPAT libraries (for old v8-style code: firebase.initializeApp, firebase.auth()) -->
+  <script src="https://www.gstatic.com/firebasejs/9.17.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.17.2/firebase-auth-compat.js"></script>
+
+  <!-- 3) Initialize Firebase + Google Auth -->
+  <script>
+    // Your Firebase config
+    const firebaseConfig = {
+      apiKey: "AIzaSyA-whHOFQQ2mLYlROwWdzhdJ46Z4viXE20",
+      authDomain: "weather-app-login-a5f37.firebaseapp.com",
+      projectId: "weather-app-login-a5f37",
+      storageBucket: "weather-app-login-a5f37.firebasestorage.app",
+      messagingSenderId: "538204276551",
+      appId: "1:538204276551:web:df91893ee458a04337ee62"
+    };
+
+    // Initialize Firebase (namespaced/compat version)
+    firebase.initializeApp(firebaseConfig);
+
+    // Access Firebase Auth
+    const auth = firebase.auth();
+
+    // Implement Google Sign-In
+    const googleSignInBtn = document.getElementById('googleSignInBtn');
+    googleSignInBtn.addEventListener('click', async () => {
+      const provider = new firebase.auth.GoogleAuthProvider();
+
+      try {
+        // Sign in with a pop-up
+        const result = await auth.signInWithPopup(provider);
+        // The signed-in user info
+        const user = result.user;
+        // Get the Firebase ID token
+        const idToken = await user.getIdToken();
+
+        // Send this ID token to your Node.js server to verify & store user
+        const res = await fetch('/auth/google-login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ idToken })
+        });
+        const data = await res.json();
+
+        if (res.ok) {
+          // Store userId in localStorage
+          localStorage.setItem('loggedInUserId', data.user.id);
+          localStorage.setItem('loggedInUserName', data.user.username);
+
+      
+          // Redirect to main weather page
+          window.location.href = 'dashboard.html';
+        } else {
+          document.getElementById('loginOutput').innerText = data.msg || 'Google login error.';
+        }
+      } catch (error) {
+        console.error('Google Sign-In error:', error);
+        document.getElementById('loginOutput').innerText = 'Error logging in with Google.';
+      }
+    });
+  </script>
+</body>
+</html>

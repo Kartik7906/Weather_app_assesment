@@ -1,0 +1,14 @@
+node_modules/
+npm-debug.log
+yarn-error.log
+yarn-debug.log
+.pnp
+.pnp.js
+yarn-integrity
+config.gypi
+node-gyp
+package-lock.json
+yarn.lock
+.DS_Store
+.env
+*.json

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Register - WeatherApp</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h2>Register</h2>
+  <form id="registerForm">
+    <input type="text" id="regUsername" placeholder="Username" required><br>
+    <input type="email" id="regEmail" placeholder="Email" required><br>
+    <input type="password" id="regPassword" placeholder="Password" required><br>
+    <button type="submit">Register</button>
+  </form>
+  <p>Already have an account? <a href="login.html">Login here</a></p>
+
+  <div id="registerOutput"></div>
+
+  <script>
+    const registerForm = document.getElementById('registerForm');
+    registerForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const username = document.getElementById('regUsername').value.trim();
+      const email = document.getElementById('regEmail').value.trim();
+      const password = document.getElementById('regPassword').value.trim();
+
+      try {
+        const res = await fetch('/auth/register', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, email, password })
+        });
+        const data = await res.json();
+        document.getElementById('registerOutput').innerText = data.msg || JSON.stringify(data);
+        if (res.ok) {
+          // If registration successful, redirect to login
+          window.location.href = 'login.html';
+        }
+      } catch (err) {
+        document.getElementById('registerOutput').innerText = 'Error registering user.';
+      }
+    });
+  </script>
+</body>
+</html>
