@@ -4,6 +4,18 @@
 
 So, this is a weather forecasting web application built with HTML, CSS, JS, Node.js, and Express.js. In this project, I have used SQL as a database for storing data and Node.js for creating the server. There is a login and register page where users can register themselves, which is managed by the database by storing user info and verifying it at the time of login. Users can directly log in with Google, which is integrated through Firebase. Here, I have integrated Firebase Google Authentication by creating a private key and establishing a connection with Firebase. For weather data retrieval, I have used a weather API by creating an API key and retrieving data based on the city name. To identify the current location, I have used the geolocation feature of the user's system to find longitude and latitude. All this frontend data is stored in the database by implementing routes and HTTP methods.
 
+## Schema:
+![alt text](image.png)
+
+## login page:
+![alt text](image-1.png)
+
+## Register Page:
+![alt text](image-2.png)
+
+## Dashboard Page:
+![alt text](image-3.png)
+
 ## Features
 
 This is an Assessment Project called Weather Web Application. This project includes the following features:
