@@ -1,4 +1,3 @@
-// routes/auth.js
 const express = require('express');
 const router = express.Router();
 const db = require('../db');
@@ -8,12 +7,10 @@ const admin = require('../firebaseAdmin');
 router.post('/register', (req, res) => {
   const { username, email, password } = req.body;
   
-  // Basic validation
   if (!username || !email || !password) {
     return res.status(400).json({ msg: 'Please fill in all fields' });
   }
 
-  // Insert into the users table
   const sql = `INSERT INTO users (username, email, password) VALUES (?, ?, ?)`;
   db.query(sql, [username, email, password], (err, result) => {
     if (err) {
@@ -24,16 +21,14 @@ router.post('/register', (req, res) => {
   });
 });
 
-// 2. Login Route (no location updates)
+// 2. Login Route 
 router.post('/login', async (req, res) => {
   const { email, password } = req.body;
 
-  // Validate input
   if (!email || !password) {
     return res.status(400).json({ msg: 'Email and password are required' });
   }
 
-  // Find user by email and password
   const sql = `SELECT * FROM users WHERE email = ? AND password = ?`;
   db.query(sql, [email, password], async (err, rows) => {
     if (err) {
@@ -45,13 +40,10 @@ router.post('/login', async (req, res) => {
       return res.status(401).json({ msg: 'Invalid credentials' });
     }
 
-    // We have a valid user
     const user = rows[0];
 
-    // (Optional) If you want a quick example of "fetchedWeatherTemp"
     let fetchedWeatherTemp = '25';
 
-    // Return success + user data
     return res.status(200).json({
       msg: 'Login successful',
       user: {
@@ -68,7 +60,6 @@ router.post('/login', async (req, res) => {
 router.post('/storeSearch', (req, res) => {
   const { userId, city, temperature, humidity, wind } = req.body;
 
-  // Basic check
   if (!userId || !city) {
     return res.status(400).json({ msg: 'Missing userId or city' });
   }
@@ -95,13 +86,11 @@ router.post('/google-login', async (req, res) => {
   }
 
   try {
-    // 1) Verify the ID token with Firebase Admin
     const decodedToken = await admin.auth().verifyIdToken(idToken);
     const googleUid = decodedToken.uid;
     const email = decodedToken.email;
     const displayName = decodedToken.name || 'Google User';
 
-    // 2) Check if this user already exists in MySQL
     const sqlCheck = 'SELECT * FROM users WHERE email = ?';
     db.query(sqlCheck, [email], (err, rows) => {
       if (err) {
@@ -110,7 +99,6 @@ router.post('/google-login', async (req, res) => {
       }
 
       if (rows.length === 0) {
-        // User does not exist -> CREATE
         const sqlInsert = `
           INSERT INTO users (username, email, password, google_uid)
           VALUES (?, ?, ?, ?)
@@ -131,10 +119,8 @@ router.post('/google-login', async (req, res) => {
           });
         });
       } else {
-        // User exists
         const existingUser = rows[0];
 
-        // Optionally update google_uid
         if (!existingUser.google_uid) {
           const sqlUpdate = `
             UPDATE users
@@ -156,7 +142,6 @@ router.post('/google-login', async (req, res) => {
             });
           });
         } else {
-          // google_uid already set
           return res.status(200).json({
             msg: 'Google login successful (existing user)',
             user: {

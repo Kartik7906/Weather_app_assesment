@@ -8,7 +8,6 @@
 <body>
 
   <!-- Register Form Container -->
-  <!-- Register Form Container -->
   <div class="registercontainer">
     <div class="registerformcontainer">
       <h2 class="registerheading">Register</h2>
@@ -34,7 +33,6 @@
             required
           />
         </div>
-        <!-- Register Button -->
         <button type="submit" class="registerbtn">Register</button>
       </form>
       <p class="registerPtag">
@@ -60,10 +58,8 @@
           body: JSON.stringify({ username, email, password })
         });
         const data = await res.json();
-       // document.getElementById('registerOutput').innerText = data.msg || JSON.stringify(data);
         alert(data.msg || JSON.stringify(data));
         if (res.ok) {
-          // If registration successful, redirect to login
           window.location.href = 'login.html';
         }
       } catch (err) {
